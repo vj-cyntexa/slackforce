@@ -40,10 +40,11 @@ exports.oauthLogin = (req, res) => {
 exports.oauthCallback = (req, res) => {
 
     var slackUserId = req.query.state;
-    console.log('Something good VJ!');
+    console.log('Something good VJ!',req.query);
     console.log(req.query.code);
     let options = {
-        url: `${SF_LOGIN_URL}/services/oauth2/token`,
+        //url: `${SF_LOGIN_URL}/services/oauth2/token`,
+        url: `https://login.salesforce.com/services/oauth2/token`,
         qs: {
             grant_type: "authorization_code",
             code: req.query.code,
