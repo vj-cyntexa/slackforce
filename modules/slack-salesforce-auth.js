@@ -40,7 +40,8 @@ exports.oauthLogin = (req, res) => {
 exports.oauthCallback = (req, res) => {
 
     var slackUserId = req.query.state;
-
+    console.log('Something good VJ!');
+    console.log(req.query);
     let options = {
         url: `${SF_LOGIN_URL}/services/oauth2/token`,
         qs: {
@@ -51,9 +52,10 @@ exports.oauthCallback = (req, res) => {
             redirect_uri: `https://${req.hostname}/oauthcallback`
         }
     };
-
+    console.log("AFTER");
     request.post(options, function (error, response, body) {
         if (error) {
+            console.log('VJ!');
             console.log(error);
             return res.send("error");
         }
