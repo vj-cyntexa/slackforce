@@ -41,7 +41,7 @@ exports.oauthCallback = (req, res) => {
 
     var slackUserId = req.query.state;
     console.log('Something good VJ!');
-    console.log(req.query);
+    console.log(req.query.code);
     let options = {
         url: `${SF_LOGIN_URL}/services/oauth2/token`,
         qs: {
@@ -59,7 +59,7 @@ exports.oauthCallback = (req, res) => {
             console.log(error);
             return res.send("error");
         }
-        console.log(response,'MOKO',body);
+        console.log(response.query,'MOKO',response.body);
         mappings[slackUserId] = JSON.parse(body);
         let html = `
             <html>
